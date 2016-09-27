@@ -6,24 +6,26 @@
     <title>Lista de Contatos</title>
 </head>
 
-<body ng-controller="contactController">
+<body ng-controller="contactController as vm">
 <br>
 <div class="container">
     <form>
         <div class="form-group col-md-12">
+            <input type="hidden" ng-model="vm.index">
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="name">Nome: </label>
-                    <input type="text" ng-model="name" id="name">
+                    <input type="text" ng-model="vm.name" id="name">
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="fone">Telefone: </label>
-                    <input type="text" ng-model="fone" id="fone">
+                    <input type="text" ng-model="vm.fone" id="fone">
                 </div>
             </div>
-            <button ng-click="adicionar()">Adicionar Contato</button>
+            <button ng-click="vm.adicionar()">Adicionar Contato</button>
+            <button ng-click="vm.save()">Editar</button>
         </div>
     </form>
 
@@ -36,12 +38,12 @@
             </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="contact in listContacts">
-            <td>{{contact.name}}</td>
-            <td>{{contact.fone}}</td>
+        <tr ng-repeat="contact in vm.listContacts track by $index">
+            <td>{{vm.name && $index == vm.index ? vm.name : contact.name}}</td>
+            <td>{{vm.fone && $index == vm.index ? vm.fone : contact.fone}}</td>
             <td>
-                <button ng-click="destroy($index)">Excluir</button>
-                <button ng-click="edit($index)">Alterar</button>
+                <button ng-click="vm.destroy($index)">Excluir</button>
+                <button ng-click="vm.edit($index)">Alterar</button>
             </td>
         </tr>
         </tbody>

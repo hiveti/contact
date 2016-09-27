@@ -1,8 +1,10 @@
 var contactApp = angular.module('contactApp');
 
-contactApp.controller('contactController', function ($scope) {
+contactApp.controller('contactController', function () {
 
-    $scope.listContacts = [
+    var self = this;
+
+    self.listContacts = [
         {   name:'Raquel',
             fone:'987173448'
         },
@@ -12,21 +14,27 @@ contactApp.controller('contactController', function ($scope) {
         }
     ];
 
-    $scope.adicionar = function(){
-        $scope.listContacts.push({
-            name : $scope.name,
-            fone : $scope.fone
+    self.adicionar = function(){
+        self.listContacts.push({
+            name : self.name,
+            fone : self.fone
 
         });
     };
 
-    $scope.destroy = function (index) {
-        $scope.listContacts.splice(index, 1);
+    self.destroy = function (index) {
+        self.listContacts.splice(index, 1);
     };
 
-    $scope.edit = function(index) {
-        $scope.name = $scope.listContacts[index].name;
-        $scope.fone = $scope.listContacts[index].fone;
+    self.edit = function(index) {
+        self.index = index;
+        self.name = self.listContacts[index].name;
+        self.fone = self.listContacts[index].fone;
     };
+
+    self.save = function () {
+        self.listContacts[self.index].name = self.name;
+        self.listContacts[self.index].fone = self.fone;
+    }
 
 });
