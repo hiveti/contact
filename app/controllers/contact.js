@@ -36,5 +36,4 @@ contactApp.controller('contactController', function () {
         self.listContacts[self.index].name = self.name;
         self.listContacts[self.index].fone = self.fone;
     }
-
 });

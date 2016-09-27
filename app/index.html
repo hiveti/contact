@@ -39,9 +39,9 @@
         </thead>
         <tbody>
         <tr ng-repeat="contact in vm.listContacts track by $index">
-            <td>{{vm.name && $index == vm.index ? vm.name : contact.name}}</td>
-            <td>{{vm.fone && $index == vm.index ? vm.fone : contact.fone}}</td>
-            <td>
+            <td>{{$index == vm.index ? vm.name : contact.name}}</td>
+            <td>{{$index == vm.index ? vm.fone : contact.fone}}</td>
+            <td>    
                 <button ng-click="vm.destroy($index)">Excluir</button>
                 <button ng-click="vm.edit($index)">Alterar</button>
             </td>
