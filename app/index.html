@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="contactApp">
+<head>
+    <!-- Bootstrap style sheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>Lista de Contatos</title>
+</head>
+
+<body ng-controller="contactController">
+<br>
+<div class="container">
+    <form>
+        <div class="form-group col-md-12">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="name">Nome: </label>
+                    <input type="text" ng-model="name" id="name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="fone">Telefone: </label>
+                    <input type="text" ng-model="fone" id="fone">
+                </div>
+            </div>
+            <button ng-click="adicionar()">Adicionar Contato</button>
+        </div>
+    </form>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Opção</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="contact in listContacts">
+            <td>{{contact.name}}</td>
+            <td>{{contact.fone}}</td>
+            <td>
+                <button ng-click="destroy($index)">Excluir</button>
+                <button ng-click="edit($index)">Alterar</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="app.js"></script>
+<script src="controllers/contact.js"></script>
+</html>
