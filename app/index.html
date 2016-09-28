@@ -41,7 +41,7 @@
         <tr ng-repeat="contact in vm.listContacts track by $index">
             <td>{{$index == vm.index ? vm.name : contact.name}}</td>
             <td>{{$index == vm.index ? vm.fone : contact.fone}}</td>
-            <td>    
+            <td>
                 <button ng-click="vm.destroy($index)">Excluir</button>
                 <button ng-click="vm.edit($index)">Alterar</button>
             </td>
