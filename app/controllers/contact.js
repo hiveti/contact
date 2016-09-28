@@ -1,5 +1,4 @@
 var contactApp = angular.module('contactApp');
-
 contactApp.controller('contactController', function () {
 
     var self = this;
